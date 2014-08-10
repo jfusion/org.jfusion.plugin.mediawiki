@@ -1,9 +1,9 @@
 {
-    "name": "jfusion/plugin-dokuwiki",
-    "type": "jfusion-plugin-dokuwiki",
-    "description": "Plugin for dokuwiki jfusion framework",
-    "keywords": ["jfusion", "plugin", "dokuwiki", "framework"],
-    "homepage": "https://github.com/jfusion/org.jfusion.plugin.dokuwiki",
+    "name": "jfusion/plugin-mediawiki",
+    "type": "jfusion-plugin-mediawiki",
+    "description": "Plugin for mediawiki jfusion framework",
+    "keywords": ["jfusion", "plugin", "mediawiki", "framework"],
+    "homepage": "https://github.com/jfusion/org.jfusion.plugin.mediawiki",
     "license": "GPL-2.0+",
     "require": {
         "php": ">=5.3.10"
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JFusion\\Plugins\\dokuwiki\\": "."
+            "JFusion\\Plugins\\mediawiki\\": "."
         }
     }
 }
