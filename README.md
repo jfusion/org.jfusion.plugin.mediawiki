@@ -1,0 +1,2 @@
+org.jfusion.plugin.mediawiki
+============================
