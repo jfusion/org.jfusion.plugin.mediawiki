@@ -120,13 +120,13 @@ class Helper extends Plugin
     function includeFramework($source_path) {
         //check for trailing slash and generate file path
 
-        $return[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'DefaultSettings.php';
+        $return[] = $source_path . 'includes/DefaultSettings.php';
         $return[] = $source_path . 'LocalSettings.php';
 
-        $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'Defines.php';
-        $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'IP.php';
-        $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'WebRequest.php';
-        $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'SiteConfiguration.php';
+        $paths[] = $source_path . 'includes/Defines.php';
+        $paths[] = $source_path . 'includes/IP.php';
+        $paths[] = $source_path . 'includes/WebRequest.php';
+        $paths[] = $source_path . 'includes/SiteConfiguration.php';
         defined ('MEDIAWIKI') or define('MEDIAWIKI', TRUE);
         defined ('MW_INSTALL_PATH') or define('MW_INSTALL_PATH', $source_path);
         foreach($paths as $path) {
