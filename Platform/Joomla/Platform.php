@@ -14,12 +14,12 @@ use JFusion\Framework;
 use JFusion\Plugin\Platform\Joomla;
 use JFusion\User\Userinfo;
 
+use Joomla\Registry\Registry;
 use Joomla\String\String;
 use Joomla\Uri\Uri;
 
 use Psr\Log\LogLevel;
 
-use JRegistry;
 use JFusionFunction;
 use JDate;
 
@@ -41,7 +41,7 @@ class Platform extends Joomla
     /**
      * @param $config
      * @param $view
-     * @param JRegistry $pluginParam
+     * @param Registry $pluginParam
      *
      * @return string
      */
