@@ -9,7 +9,6 @@
  * @link       http://www.jfusion.org
  */
 
-use JFusion\Plugin\Plugin_Admin;
 use JFusion\Factory;
 use JFusion\Framework;
 
