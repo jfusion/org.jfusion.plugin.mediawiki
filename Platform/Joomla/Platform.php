@@ -14,6 +14,7 @@ use JFusion\Framework;
 use JFusion\Plugin\Platform\Joomla;
 use JFusion\User\Userinfo;
 
+use Joomla\Date\Date;
 use Joomla\Registry\Registry;
 use Joomla\String\String;
 use Joomla\Uri\Uri;
@@ -21,7 +22,6 @@ use Joomla\Uri\Uri;
 use Psr\Log\LogLevel;
 
 use JFusionFunction;
-use JDate;
 
 use DateTimeZone;
 use Exception;
@@ -156,7 +156,7 @@ class Platform extends Joomla
 					    //process date info
 					    if($showdate) {
 						    jimport('joomla.utilities.date');
-						    $JDate =  new JDate($value->created);
+						    $JDate =  new Date($value->created);
 						    $JDate->setTimezone(new DateTimeZone(JFusionFunction::getJoomlaTimezone()));
 						    if (empty($custom_date)) {
 							    $output .= ' ' . $JDate->format(_DATE_FORMAT_LC2, true);
