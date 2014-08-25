@@ -74,7 +74,7 @@ class Platform extends Joomla
 		    }
 
 		    $query = $db->getQuery(true)
-			    ->select('p.page_id , p.page_title AS title, SUBSTRING(t.old_text,1,' . $display_limit . ') as text,
+			    ->select('p.page_id , p.page_title AS title, SUBSTRING(t.old_text,1,' . $db->quote($display_limit) . ') as text,
 					STR_TO_DATE(r.rev_timestamp, "%Y%m%d%H%i%S") AS created,
 					p.page_title AS section,
 					r.rev_user_text as user,
