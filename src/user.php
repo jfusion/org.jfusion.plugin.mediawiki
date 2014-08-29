@@ -73,7 +73,6 @@ class User extends \JFusion\Plugin\User
 			    foreach($grouplist as $group) {
 				    $groups[] = $group->ug_group;
 			    }
-			    $result->group_id = implode(',', $groups);
 			    $result->groups = $groups;
 
 			    $query = $db->getQuery(true)
