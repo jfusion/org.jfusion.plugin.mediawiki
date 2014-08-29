@@ -155,7 +155,6 @@ class Platform extends Joomla
 					    }
 					    //process date info
 					    if($showdate) {
-						    jimport('joomla.utilities.date');
 						    $JDate =  new Date($value->created);
 						    $JDate->setTimezone(new DateTimeZone(JFusionFunction::getJoomlaTimezone()));
 						    if (empty($custom_date)) {
