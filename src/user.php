@@ -167,31 +167,26 @@ class User extends \JFusion\Plugin\User
     function createSession(Userinfo $userinfo, $options){
         $status = array('error' => array(), 'debug' => array());
 
-		//do not create sessions for blocked users
-		if (!empty($userinfo->block) || !empty($userinfo->activation)) {
-            $status['error'][] = Text::_('FUSION_BLOCKED_USER');
-		} else {
-            $cookie_path = $this->params->get('cookie_path');
-            $cookie_domain = $this->params->get('cookie_domain');
-            $cookie_secure = $this->params->get('secure');
-            $cookie_httponly = $this->params->get('httponly');
-			$expires = $this->params->get('cookie_expires', 3100);
-            $cookie_name = $this->helper->getCookieName();
-			$this->helper->startSession($options);
+	    $cookie_path = $this->params->get('cookie_path');
+	    $cookie_domain = $this->params->get('cookie_domain');
+	    $cookie_secure = $this->params->get('secure');
+	    $cookie_httponly = $this->params->get('httponly');
+	    $expires = $this->params->get('cookie_expires', 3100);
+	    $cookie_name = $this->helper->getCookieName();
+	    $this->helper->startSession($options);
 
-			$status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserName', $userinfo->username, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-            $_SESSION['wsUserName'] = $userinfo->username;
+	    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserName', $userinfo->username, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
+	    $_SESSION['wsUserName'] = $userinfo->username;
 
-			$status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserID', $userinfo->userid, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-            $_SESSION['wsUserID'] = $userinfo->userid;
+	    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserID', $userinfo->userid, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
+	    $_SESSION['wsUserID'] = $userinfo->userid;
 
-            $_SESSION[ 'wsToken'] = $userinfo->user_token;
-            if (!empty($options['remember'])) {
-	            $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'Token', $userinfo->user_token, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-            }
+	    $_SESSION[ 'wsToken'] = $userinfo->user_token;
+	    if (!empty($options['remember'])) {
+		    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'Token', $userinfo->user_token, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
+	    }
 
-			$this->helper->closeSession();
-        }
+	    $this->helper->closeSession();
 		return $status;
 	}
 
