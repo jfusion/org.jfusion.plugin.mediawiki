@@ -35,6 +35,10 @@ use Exception;
  */
 class User extends \JFusion\Plugin\User
 {
+	/**
+	 * @var $helper Helper
+	 */
+	var $helper;
 
     /**
      * @param Userinfo $userinfo
