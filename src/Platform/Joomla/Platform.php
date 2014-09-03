@@ -106,7 +106,7 @@ class Platform extends Joomla
 
 						    // retrieve avatar
 						    if(!empty($avatar_software) && $avatar_software != 'jfusion' && $userlookup) {
-							    $o_avatar = Framework::getAltAvatar($avatar_software, $userlookup);
+							    $o_avatar = JFusionFunction::getAltAvatar($avatar_software, $userlookup);
 						    }
 						    if(empty($o_avatar)) {
 							    $o_avatar = JFusionFunction::getJoomlaURL() . 'components/com_jfusion/images/noavatar.png';
