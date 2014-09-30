@@ -49,9 +49,6 @@ class User extends \JFusion\Plugin\User
     {
 	    $user = null;
 	    try {
-		    // get the username
-		    $userinfo->username = $this->filterUsername($userinfo->username);
-
 		    list($identifier_type, $identifier) = $this->getUserIdentifier($userinfo, 'user_name', 'user_email', 'user_id');
 
 		    // initialise some objects
@@ -209,6 +206,23 @@ class User extends \JFusion\Plugin\User
 	    $username = ucfirst($username);
         return $username;
     }
+
+	/**
+	 * used to validate if a user can be created or not
+	 * should throw exception if user can't be created with info about the error.
+	 *
+	 * @param $userinfo
+	 *
+	 * @return boolean
+	 */
+	function validateUser(Userinfo $userinfo)
+	{
+		$username = $this->filterUsername($userinfo->username);
+		if ($username !== $userinfo->username) {
+			throw new RuntimeException('Has Invalid Character: ' . $userinfo->username . ' vs ' . $username);
+		}
+		return true;
+	}
 
     /**
      * @param Userinfo $userinfo
@@ -405,7 +419,7 @@ class User extends \JFusion\Plugin\User
 		    //prepare the user variables
 		    $user = new stdClass;
 		    $user->user_id = NULL;
-		    $user->user_name = $this->filterUsername($userinfo->username);
+		    $user->user_name = $userinfo->username;
 		    $user->user_real_name = $userinfo->name;
 		    $user->user_email = $userinfo->email;
 		    $user->user_email_token_expires = null;
