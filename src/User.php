@@ -219,7 +219,7 @@ class User extends \JFusion\Plugin\User
 	{
 		$username = $this->filterUsername($userinfo->username);
 		if ($username !== $userinfo->username) {
-			throw new RuntimeException('Has Invalid Character: ' . $userinfo->username . ' vs ' . $username);
+			throw new RuntimeException('Username Has Invalid Character: ' . $userinfo->username . ' vs ' . $username);
 		}
 		return true;
 	}
