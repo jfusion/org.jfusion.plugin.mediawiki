@@ -10,6 +10,7 @@
  */
 
 use JFusion\Plugin\Plugin;
+use Joomla\Uri\Uri;
 
 /**
  * Helper class
@@ -128,7 +129,7 @@ class Helper extends Plugin
 
         $source_url = $this->params->get('source_url');
 
-        $uri = new JURI($source_url);
+        $uri = new Uri($source_url);
 
         $wgStylePath = $uri->getPath() .'skinns';
 
