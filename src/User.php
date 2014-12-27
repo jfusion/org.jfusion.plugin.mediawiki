@@ -66,7 +66,7 @@ class User extends \JFusion\Plugin\User
 			    $query = $db->getQuery(true)
 				    ->select('ug_group')
 				    ->from('#__user_groups')
-				    ->where('ug_user = ' . $db->quote($result->userid));
+				    ->where('ug_user = ' . (int)$result->userid);
 
 			    $db->setQuery($query);
 			    $grouplist = $db->loadObjectList();
@@ -79,7 +79,7 @@ class User extends \JFusion\Plugin\User
 			    $query = $db->getQuery(true)
 				    ->select('ipb_user, ipb_expiry')
 				    ->from('#__ipblocks')
-				    ->where('ipb_user = ' . $db->quote($result->userid));
+				    ->where('ipb_user = ' . (int)$result->userid);
 
 			    $db->setQuery($query);
 			    $block = $db->loadObject();
@@ -122,7 +122,7 @@ class User extends \JFusion\Plugin\User
 
 	    $query = $db->getQuery(true)
 		    ->delete('#__user_groups')
-		    ->where('ug_user = ' .  $db->quote($userinfo->userid));
+		    ->where('ug_user = ' .  (int)$userinfo->userid);
 
 	    $db->setQuery($query);
 	    $db->execute();
@@ -295,7 +295,7 @@ class User extends \JFusion\Plugin\User
 			try {
 				$query = $db->getQuery(true)
 					->delete('#__user_groups')
-					->where('ug_user = ' .  $db->quote($existinguser->userid));
+					->where('ug_user = ' .  (int)$existinguser->userid);
 
 				$db->setQuery($query);
 				$db->execute();
@@ -362,7 +362,7 @@ class User extends \JFusion\Plugin\User
 
 	    $query = $db->getQuery(true)
 		    ->delete('#__ipblocks')
-		    ->where('ipb_user = ' .  $db->quote($userinfo->userid));
+		    ->where('ipb_user = ' . (int)$userinfo->userid);
 
 	    $db->setQuery($query);
 	    $db->execute();
@@ -479,7 +479,7 @@ class User extends \JFusion\Plugin\User
 			    ->update('#__user')
 			    ->set('is_activated = 0')
 			    ->set('user_token = ' . $db->quote($mToken))
-			    ->where('user_id = ' . $db->quote($user->user_id));
+			    ->where('user_id = ' . (int)$user->user_id);
 
 		    $db->setQuery($query);
 		    $db->execute();
