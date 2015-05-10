@@ -233,18 +233,15 @@ class Platform extends Joomla
 		return 'index.php?title=' . $post->title;
 	}
 
-	/**
-	 * @param $data
-	 */
-	function _parseBody(&$data)
+	function _parseBody()
 	{
 		$regex_body		= array();
 		$replace_body	= array();
 
-		$uri = new Uri($data->integratedURL);
+		$uri = new Uri($this->data->integratedURL);
 		$regex_body[]	= '#addButton\("/(.*?)"#mS';
 		$replace_body[]	= 'addButton("' . $uri->toString(array('scheme', 'host')) . '/$1"';
 
-		$data->body = preg_replace($regex_body, $replace_body, $data->body);
+		$this->data->body = preg_replace($regex_body, $replace_body, $this->data->body);
 	}
 }
