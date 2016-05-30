@@ -143,11 +143,14 @@ class User extends \JFusion\Plugin\User
         $cookie_name = $this->helper->getCookieName();
         $expires = -3600;
 
+		/*
+		 * Not working session conflict between joomla and mediawiki, can posibly be fixed some how!
 	    $this->helper->startSession($options);
    		$_SESSION['wsUserID'] = 0;
    		$_SESSION['wsUserName'] = '';
    		$_SESSION['wsToken'] = '';
 	    $this->helper->closeSession();
+		*/
 
         $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserName', '', $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
         $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserID', '', $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
@@ -174,20 +177,22 @@ class User extends \JFusion\Plugin\User
 	    $cookie_httponly = $this->params->get('httponly');
 	    $expires = $this->params->get('cookie_expires', 3100);
 	    $cookie_name = $this->helper->getCookieName();
-	    $this->helper->startSession($options);
+		
+		//Not working session conflict between joomla and mediawiki, can posibly be fixed some how!
+	    //$this->helper->startSession($options);
 
 	    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserName', $userinfo->username, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-	    $_SESSION['wsUserName'] = $userinfo->username;
+	    //$_SESSION['wsUserName'] = $userinfo->username;
 
 	    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'UserID', $userinfo->userid, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-	    $_SESSION['wsUserID'] = $userinfo->userid;
+	    //$_SESSION['wsUserID'] = $userinfo->userid;
 
-	    $_SESSION[ 'wsToken'] = $userinfo->user_token;
-	    if (!empty($options['remember'])) {
+	    //$_SESSION[ 'wsToken'] = $userinfo->user_token;
+	    //if (!empty($options['remember'])) {
 		    $status[LogLevel::DEBUG][] = $this->addCookie($cookie_name  . 'Token', $userinfo->user_token, $expires, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
-	    }
+	    //}
 
-	    $this->helper->closeSession();
+	    //$this->helper->closeSession();
 		return $status;
 	}
 
