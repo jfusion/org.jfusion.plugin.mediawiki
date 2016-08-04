@@ -107,7 +107,7 @@ class Helper extends Plugin
         $paths = $this->includeFramework($source_path);
         $IP = $source_path;
         foreach($paths as $path) {
-            include($path);
+            include_once($path);
         }
         $config[$getVar] = (isset($$getVar)) ? $$getVar : '';
         return $config[$getVar];
@@ -120,7 +120,7 @@ class Helper extends Plugin
      */
     function includeFramework($source_path) {
         //check for trailing slash and generate file path
-
+        $return[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'GlobalFunctions.php'; // In MediaWiki 1.27, the function wfLoadSkin is used in LocalSettings to set up the skin. 
         $return[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'DefaultSettings.php';
         $return[] = $source_path . 'LocalSettings.php';
 
@@ -137,7 +137,6 @@ class Helper extends Plugin
 
         $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'AutoLoader.php';
         $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'Defines.php';
-        $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'GlobalFunctions.php';
         $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'IP.php';
         $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'utils' . DIRECTORY_SEPARATOR . 'IP.php';
         $paths[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'WebRequest.php';
