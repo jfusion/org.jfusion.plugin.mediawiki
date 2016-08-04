@@ -120,7 +120,7 @@ class Helper extends Plugin
      */
     function includeFramework($source_path) {
         //check for trailing slash and generate file path
-
+        $return[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'GlobalFunctions.php'; // In MediaWiki 1.27, the function wfLoadSkin is used in LocalSettings to set up the skin. 
         $return[] = $source_path . 'includes'. DIRECTORY_SEPARATOR . 'DefaultSettings.php';
         $return[] = $source_path . 'LocalSettings.php';
 
